@@ -9,7 +9,7 @@
     Script Code Generator Version: 4.30.00.00
   .LINK
 #>
-[CmdletBinding(DefaultParameterSetName = "Default")]
+[CmdletBinding(DefaultParameterSetName = "Local")]
 param (
   [parameter(Mandatory = $True, ParameterSetName = "Remote")]
   [String]$ComputerName = [Environment]::MachineName,
@@ -21,7 +21,7 @@ param (
 $ErrorActionPreference = "Stop"
 
 # Comment Out $VerbosePreference Line for Production Deployment
-$VerbosePreference = "SilentlyContinue"
+$VerbosePreference = "Continue"
 
 # Comment Out $DebugPreference Line for Production Deployment
 $DebugPreference = "Continue"
