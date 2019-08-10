@@ -1,9 +1,9 @@
 {\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Tahoma;}{\f1\fnil\fcharset2 Symbol;}}
-{\*\generator Riched20 10.0.17763}\viewkind4\uc1 
+{\*\generator Riched20 10.0.18362}\viewkind4\uc1 
 \pard\sa200\sl276\slmult1\qc\b\f0\fs48\lang9 Edit-MyDesktopMenus\b0\fs24\par
 
 \pard\sa200\sl276\slmult1\par
-\b Edit-MyDesktopMenus\b0  is a Desktop Context Menu Editor for creating and editing User and Systems Context Menus on the Desktop.\par
+\b Edit-MyDesktopMenus\b0  is a utility to create and edit User and System Desktop Right Click Context Menus.\par
 Windows 10 x64 with PowerShell 5.0 or higher is required to run the Desktop Menu Editor.\par
 
 \pard\sa200\sl240\slmult1\qc{\pict{\*\picprop}\wmetafile8\picw15610\pich7805\picwgoal8640\pichgoal4320 
@@ -13417,18 +13417,17 @@ ffffffffffff8a8a8b000031261c534a424e453c4e453c4e453c4e453c4e453c4e453c4e453c4e
 }\par
 
 \pard\sa200\sl240\slmult1\par
-\b User Desktop Menus\b0 : User Menus are available only to the user that created them. User Menus can be created or edited by any user only when running in Local Mode.\par
+\b User Desktop Menus\b0 : User Menus are available only to the user that was logged on when they were created. User Menus can be created or edited by any user when running in Local Mode.\par
 \par
 \b System Desktop Menus\b0 : System Menus are available to all users that that logon to the system. System Menus can only be created when the editor it executed as a user with administrative rights in both Local and Remote Modes.\par
 \par
 
-\pard\sa200\sl276\slmult1\b Local Mode\b0 : Desktop Menu are created / edited on the system the editor is running on only for the user that is currently logged on.\par
-\par
-\b Remote Mode\b0 : Desktop Menus are created / edited on the remote system specified on the command line.\par
+\pard\sa200\sl276\slmult1\b Local Mode\b0 : User and System Desktop Menus are created / edited on the system the editor is running on.\par
+\b Remote Mode\b0 : System Desktop Menus are created / edited on the remote system specified on the command line by the ComputerName parameter.\par
 
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Edit-MyDesktopMenu -ComputerName "RemoteCompter"\par
 
-\pard\sa200\sl276\slmult1 To Connwect using alternamte credentions use the AskCreds parameter\par
+\pard\sa200\sl276\slmult1 To Connect using alternamte credentions use the AskCreds parameter.\par
 
 \pard{\pntext\f1\'B7\tab}{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sa200\sl276\slmult1 Edit-MyDesktopMenu -ComputerName "RemoteCompter" -AskCreds "Yes"\par
 
