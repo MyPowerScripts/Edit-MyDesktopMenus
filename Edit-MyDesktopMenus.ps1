@@ -8506,8 +8506,6 @@ function Start-MyDMMidMenuToolStripButtonClick()
                 [Void]$ExportAdd.AppendLine("`"SeparatorAfter`"=`"Yes`"")
               }
               [Void]$ExportAdd.AppendLine("$TempHiveAdd\$($MyDMConfig.RegistryMenuData)\$TempMenuID\Shell\$TempCmdName\Command]")
-              #$FilePath = "$($Cmd.Command)".Replace("\", "\\").Replace("`"", "\`"")
-              #[Void]$ExportAdd.AppendLine("@=`"$FilePath`"")
               $Lines = @("$(((($Cmd.Command).ToCharArray() | ForEach-Object -Process { "{0:X2}" -f [Byte]$PSItem }) -join ",00,")),00,00,00" -split "(?<=\G.{96})(?=.)")
               if ($Lines.Count -gt 1)
               {
@@ -8523,6 +8521,8 @@ function Start-MyDMMidMenuToolStripButtonClick()
               {
                 [Void]$ExportAdd.AppendLine("@=hex(2):$($Lines[0])")
               }
+              #$FilePath = "$($Cmd.Command)".Replace("\", "\\").Replace("`"", "\`"")
+              #[Void]$ExportAdd.AppendLine("@=`"$FilePath`"")
               #$FilePath = "hex(2):$(((($Cmd.Command).ToCharArray() | ForEach-Object -Process { "{0:X2}" -f [Byte]$PSItem }) -join ",00,")),00,00,00"
               #[Void]$ExportAdd.AppendLine("@=$FilePath")
             }
@@ -8574,8 +8574,23 @@ function Start-MyDMMidMenuToolStripButtonClick()
               }
               [Void]$ExportAdd.AppendLine(("`"CommandFlags`"=dword:{0:X8}" -f $SubCmd.CommandFlags))
               [Void]$ExportAdd.AppendLine("$TempHiveAdd\$($MyDMConfig.RegistrySubMenuCmds)\$TempSubCmdName\Command]")
-              $FilePath = "$($SubCmd.Command)".Replace("\", "\\").Replace("`"", "\`"")
-              [Void]$ExportAdd.AppendLine("@=`"$FilePath`"")
+              $Lines = @("$(((($SubCmd.Command).ToCharArray() | ForEach-Object -Process { "{0:X2}" -f [Byte]$PSItem }) -join ",00,")),00,00,00" -split "(?<=\G.{96})(?=.)")
+              if ($Lines.Count -gt 1)
+              {
+                [Void]$ExportAdd.AppendLine("@=hex(2):$($Lines[0])\")
+                For ($Index = 1; $Index -lt ($Lines.Count - 1); $Index++)
+                {
+                  [Void]$ExportAdd.AppendLine("  $($Lines[$Index])\")
+                  
+                }
+                [Void]$ExportAdd.AppendLine("  $($Lines[($Lines.Count - 1)])")
+              }
+              else
+              {
+                [Void]$ExportAdd.AppendLine("@=hex(2):$($Lines[0])")
+              }
+              #$FilePath = "$($SubCmd.Command)".Replace("\", "\\").Replace("`"", "\`"")
+              #[Void]$ExportAdd.AppendLine("@=`"$FilePath`"")
               #$FilePath = "hex(2):$(((($SubCmd.Command).ToCharArray() | ForEach-Object -Process { "{0:X2}" -f [Byte]$PSItem }) -join ",00,")),00,00"
               #[Void]$ExportAdd.AppendLine("@=$FilePath")
             }
