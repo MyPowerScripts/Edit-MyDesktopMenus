@@ -52,7 +52,7 @@ $MyDMConfig.EditRegistry = $True
 
 # MyDM Script Configuration
 $MyDMConfig.ScriptName = "My Desktop Menus"
-$MyDMConfig.ScriptVersion = "3.1.4.0"
+$MyDMConfig.ScriptVersion = "3.1.5.0"
 $MyDMConfig.ScriptAuthor = "Ken Sweet"
 
 # MyDM Form Control Space
@@ -1607,7 +1607,7 @@ function New-ListViewItem()
     [Int]$ImageIndex = -1,
     [parameter(Mandatory = $True, ParameterSetName = "Key")]
     [String]$ImageKey,
-    [Object]$Group,
+    [System.Windows.Forms.ListViewGroup]$Group,
     [String]$ToolTip,
     [Switch]$Checked,
     [Switch]$PassThru
