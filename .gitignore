@@ -1,0 +1,4 @@
+/bin
+/x64/*.exe
+/x86
+*.psbuild

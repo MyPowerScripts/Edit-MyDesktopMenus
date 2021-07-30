@@ -1820,7 +1820,7 @@ function Decompress-MyData()
     $MemoryStream = New-Object -TypeName System.IO.MemoryStream
     $MemoryStream.Write($CompressedData, 0, $CompressedData.Length)
     [Void]$MemoryStream.Seek(0, 0)
-    $GZipStream = New-Object -TypeName System.IO.Compression.GZipStream($MemoryStream, [System.IO.Compression.CompressionMode]::Decompress)
+    $GZipStream = New-Object -TypeName System.IO.Compression.GZipStream($MemoryStream, [System.IO.Compression.CompressionMode]::XDecompress)
     $StreamReader = New-Object -TypeName System.IO.StreamReader($GZipStream, [System.Text.Encoding]::UTF8)
     if ($AsString.IsPresent)
     {
@@ -7255,7 +7255,7 @@ function Start-MyDMFormShown()
                 
                 $NewMenu.Command = $TempCmdArray.ToArray()
               }
-              $CurTreeNode.ExpandAll()
+              $CurTreeNode.Expand()
               
               if ($CheckValue)
               {
@@ -7645,7 +7645,7 @@ function Start-MyDMFormShown()
                 }
               }
               
-              $CurTreeNode.ExpandAll()
+              $CurTreeNode.Expand()
               
               if ($CheckValue)
               {
